@@ -119,3 +119,15 @@ variable "enable_auto_scaling" {
   default     = false
   type        = bool
 }
+
+variable "public_ssh_key" {
+  type        = string
+  default     = ""
+  description = "A custom ssh key to control access to the AKS cluster. Changing this forces a new resource to be created."
+}
+
+variable "admin_username" {
+  type        = string
+  default     = null
+  description = "The username of the local administrator to be created on the Kubernetes cluster. Set this variable to `null` to turn off the cluster's `linux_profile`. Changing this forces a new resource to be created."
+}

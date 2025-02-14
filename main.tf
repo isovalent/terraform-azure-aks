@@ -60,6 +60,8 @@ module "main" {
   vnet_subnet_id            = var.subnet_id
   oidc_issuer_enabled       = var.oidc_issuer_enabled
   workload_identity_enabled = var.workload_identity_enabled
+  public_ssh_key            = var.public_ssh_key
+  admin_username            = var.admin_username
 }
 
 // Create an Azure AD service principal that Cilium can run under.

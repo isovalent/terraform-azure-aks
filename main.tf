@@ -32,24 +32,25 @@ data "azuread_group" "admins" {
 // Create an AKS cluster.
 module "main" {
   source  = "Azure/aks/azurerm"
-  version = "9.0.0"
+  version = "9.4.1"
 
-  agents_availability_zones         = sort(flatten(jsondecode(module.availability_zones_data_source.stdout)))
-  agents_max_count                  = var.max_nodes
-  agents_min_count                  = var.min_nodes
-  agents_pool_name                  = local.pool_name
-  agents_tags                       = local.tags
-  agents_size                       = var.instance_type
-  cluster_name                      = var.name
-  enable_auto_scaling               = var.enable_auto_scaling
-  role_based_access_control_enabled = true
-  kubernetes_version                = var.kubernetes_version
-  net_profile_dns_service_ip        = cidrhost(var.service_cidr, 10)
-  net_profile_service_cidr          = var.service_cidr
-  network_plugin                    = var.network_plugin
-  orchestrator_version              = var.kubernetes_version
-  os_disk_size_gb                   = var.root_disk_size
-  private_cluster_enabled           = false
+  agents_availability_zones            = sort(flatten(jsondecode(module.availability_zones_data_source.stdout)))
+  agents_max_count                     = var.max_nodes
+  agents_min_count                     = var.min_nodes
+  agents_pool_name                     = local.pool_name
+  agents_tags                          = local.tags
+  agents_size                          = var.instance_type
+  cluster_name                         = var.name
+  cluster_log_analytics_workspace_name = var.name
+  enable_auto_scaling                  = var.enable_auto_scaling
+  role_based_access_control_enabled    = true
+  kubernetes_version                   = var.kubernetes_version
+  net_profile_dns_service_ip           = cidrhost(var.service_cidr, 10)
+  net_profile_service_cidr             = var.service_cidr
+  network_plugin                       = var.network_plugin
+  orchestrator_version                 = var.kubernetes_version
+  os_disk_size_gb                      = var.root_disk_size
+  private_cluster_enabled              = false
   rbac_aad_admin_group_object_ids = [
     for k, v in data.azuread_group.admins : v.id
   ]

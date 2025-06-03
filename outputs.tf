@@ -44,3 +44,7 @@ output "cluster_endpoint" {
 output "oidc_issuer_url" {
   value = module.main.oidc_issuer_url
 }
+
+output "aks_identity_principal_id" {
+  value = module.main.kubelet_identity.object_id
+}

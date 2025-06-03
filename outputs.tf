@@ -44,3 +44,7 @@ output "cluster_endpoint" {
 output "oidc_issuer_url" {
   value = module.main.oidc_issuer_url
 }
+
+output "cluster_identity" {
+  value = module.main.cluster_identity
+}

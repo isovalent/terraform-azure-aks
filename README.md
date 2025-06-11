@@ -17,9 +17,9 @@ An opinionated Terraform module that can be used to create and manage an AKS clu
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 1.15.0 |
-| <a name="provider_azuread"></a> [azuread](#provider\_azuread) | 3.4.0 |
-| <a name="provider_null"></a> [null](#provider\_null) | 3.2.4 |
+| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | >= 1.14.0 |
+| <a name="provider_azuread"></a> [azuread](#provider\_azuread) | >= 2.49.1 |
+| <a name="provider_null"></a> [null](#provider\_null) | >= 3.2.2 |
 
 ## Modules
 

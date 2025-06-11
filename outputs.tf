@@ -12,14 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "cilium_service_principal_client_id" {
-  value = length(module.cilium_service_principal) > 0 ? module.cilium_service_principal[0].client_id : null
-}
-
-output "cilium_service_principal_client_secret" {
-  value = length(module.cilium_service_principal) > 0 ? module.cilium_service_principal[0].client_secret : null
-}
-
 output "cluster_name" {
   value = var.name
 }

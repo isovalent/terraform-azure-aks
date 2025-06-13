@@ -98,7 +98,7 @@ variable "kube_proxy_disabled" {
 
 variable "sp_enabled" {
   description = "Set to false to disable service principle creation"
-  default     = true
+  default     = false
   type        = bool
 }
 

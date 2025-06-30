@@ -15,10 +15,10 @@
 // Grab the list of availablity zones for the chosen region.
 // https://github.com/hashicorp/terraform-provider-azurerm/issues/3025#issuecomment-644014237
 module "availability_zones_data_source" {
-  source  = "matti/resource/shell"
-  version = "1.5.0"
+  source  = "Invicton-Labs/shell-resource/external"
+  version = "0.4.1"
 
-  command = "az vm list-skus --location ${var.region} --zone --resource-type virtualMachines --size ${var.instance_type} --query '[].locationInfo[0].zones' --output jsonc"
+  command_unix = "az vm list-skus --location ${var.region} --zone --resource-type virtualMachines --size ${var.instance_type} --query '[].locationInfo[0].zones' --output jsonc"
 }
 
 
@@ -32,9 +32,10 @@ data "azuread_group" "admins" {
 // Create an AKS cluster.
 module "main" {
   source  = "Azure/aks/azurerm"
-  version = "9.4.1"
+  version = "10.1.1"
 
   agents_availability_zones            = sort(flatten(jsondecode(module.availability_zones_data_source.stdout)))
+  location                             = var.region
   agents_max_count                     = var.max_nodes
   agents_min_count                     = var.min_nodes
   agents_pool_name                     = local.pool_name
@@ -42,6 +43,7 @@ module "main" {
   agents_size                          = var.instance_type
   cluster_name                         = var.name
   cluster_log_analytics_workspace_name = var.name
+  prefix                               = var.name
   enable_auto_scaling                  = var.enable_auto_scaling
   role_based_access_control_enabled    = true
   kubernetes_version                   = var.kubernetes_version
@@ -54,11 +56,12 @@ module "main" {
   rbac_aad_admin_group_object_ids = [
     for k, v in data.azuread_group.admins : v.id
   ]
-  rbac_aad_managed          = true
-  resource_group_name       = var.resource_group_name
-  sku_tier                  = var.paid_tier ? "Standard" : "Free"
-  prefix                    = var.name
-  vnet_subnet_id            = var.subnet_id
+  rbac_aad            = true
+  resource_group_name = var.resource_group_name
+  sku_tier            = var.paid_tier ? "Standard" : "Free"
+  vnet_subnet = {
+    id = var.subnet_id
+  }
   oidc_issuer_enabled       = var.oidc_issuer_enabled
   workload_identity_enabled = var.workload_identity_enabled
   public_ssh_key            = var.public_ssh_key
@@ -68,7 +71,7 @@ module "main" {
 // Create an Azure AD service principal that Cilium can run under.
 module "cilium_service_principal" {
   count  = var.sp_enabled == true ? 1 : 0
-  source = "git::https://github.com/isovalent/terraform-azure-service-principal.git?ref=v1.2"
+  source = "git::https://github.com/isovalent/terraform-azure-service-principal.git?ref=v1.3"
 
   application_name = "${var.name}-cilium"
 }
@@ -78,7 +81,7 @@ resource "azapi_update_resource" "kube_proxy_disabled" {
   count       = var.kube_proxy_disabled == true ? 1 : 0
   resource_id = module.main.aks_id
   type        = "Microsoft.ContainerService/managedClusters@2024-02-02-preview"
-  body = jsonencode({
+  body = {
     properties = {
       networkProfile = {
         kubeProxyConfig = {
@@ -86,7 +89,7 @@ resource "azapi_update_resource" "kube_proxy_disabled" {
         }
       }
     }
-  })
+  }
   lifecycle {
     ignore_changes = all
   }

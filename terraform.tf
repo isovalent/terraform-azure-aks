@@ -16,19 +16,19 @@ terraform {
   required_providers {
     azuread = {
       source  = "hashicorp/azuread"
-      version = ">= 2.49.1"
+      version = ">= 3.4.0"
     }
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = ">= 3.103.1"
+      version = ">= 3.117.1" # https://github.com/Azure/terraform-azurerm-network/issues/160
     }
     null = {
       source  = "hashicorp/null"
-      version = ">= 3.2.2"
+      version = ">= 3.2.4"
     }
     azapi = {
       source  = "azure/azapi"
-      version = ">= 1.14.0"
+      version = ">= 2.4.0"
     }
   }
   required_version = ">= 1.6.0"

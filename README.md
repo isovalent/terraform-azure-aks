@@ -8,26 +8,26 @@ An opinionated Terraform module that can be used to create and manage an AKS clu
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.0 |
-| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | >= 1.14.0 |
-| <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | >= 2.49.1 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.103.1 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | >= 3.2.2 |
+| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | >= 2.4.0 |
+| <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | >= 3.4.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.117.1 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | >= 3.2.4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | >= 1.14.0 |
-| <a name="provider_azuread"></a> [azuread](#provider\_azuread) | >= 2.49.1 |
-| <a name="provider_null"></a> [null](#provider\_null) | >= 3.2.2 |
+| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | >= 2.4.0 |
+| <a name="provider_azuread"></a> [azuread](#provider\_azuread) | >= 3.4.0 |
+| <a name="provider_null"></a> [null](#provider\_null) | >= 3.2.4 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_availability_zones_data_source"></a> [availability\_zones\_data\_source](#module\_availability\_zones\_data\_source) | matti/resource/shell | 1.5.0 |
-| <a name="module_cilium_service_principal"></a> [cilium\_service\_principal](#module\_cilium\_service\_principal) | git::https://github.com/isovalent/terraform-azure-service-principal.git | v1.2 |
-| <a name="module_main"></a> [main](#module\_main) | Azure/aks/azurerm | 9.4.1 |
+| <a name="module_availability_zones_data_source"></a> [availability\_zones\_data\_source](#module\_availability\_zones\_data\_source) | Invicton-Labs/shell-resource/external | 0.4.1 |
+| <a name="module_cilium_service_principal"></a> [cilium\_service\_principal](#module\_cilium\_service\_principal) | git::https://github.com/isovalent/terraform-azure-service-principal.git | v1.3 |
+| <a name="module_main"></a> [main](#module\_main) | Azure/aks/azurerm | 10.1.1 |
 
 ## Resources
 

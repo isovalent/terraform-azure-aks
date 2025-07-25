@@ -40,6 +40,7 @@ module "main" {
   agents_min_count                     = var.min_nodes
   agents_pool_name                     = local.pool_name
   agents_tags                          = local.tags
+  tags                                 = local.tags
   agents_size                          = var.instance_type
   cluster_name                         = var.name
   cluster_log_analytics_workspace_name = var.name

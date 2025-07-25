@@ -131,3 +131,9 @@ variable "admin_username" {
   default     = null
   description = "The username of the local administrator to be created on the Kubernetes cluster. Set this variable to `null` to turn off the cluster's `linux_profile`. Changing this forces a new resource to be created."
 }
+
+variable "tags" {
+  description = "A map of tags to assign to the AKS cluster."
+  type        = map(string)
+  default     = {}
+}

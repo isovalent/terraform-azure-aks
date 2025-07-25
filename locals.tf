@@ -15,7 +15,10 @@
 locals {
   path_to_kubeconfig_file = abspath("${path.module}/${var.name}.kubeconfig") // The path to the kubeconfig file that will be created and output.
   pool_name               = "main"
-  tags = {
-    "owner" : var.owner,
-  }
+  tags = merge(
+    tomap({
+      owner = var.owner
+    }),
+    var.tags
+  )
 }

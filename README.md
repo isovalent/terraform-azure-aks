@@ -61,6 +61,7 @@ An opinionated Terraform module that can be used to create and manage an AKS clu
 | <a name="input_service_cidr"></a> [service\_cidr](#input\_service\_cidr) | The CIDR block to use for services. | `string` | n/a | yes |
 | <a name="input_sp_enabled"></a> [sp\_enabled](#input\_sp\_enabled) | Set to false to disable service principle creation | `bool` | `false` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | The ID of the subnet where to place the node pool. | `string` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to assign to the AKS cluster. | `map(string)` | `{}` | no |
 | <a name="input_workload_identity_enabled"></a> [workload\_identity\_enabled](#input\_workload\_identity\_enabled) | Enable workload identity | `bool` | `false` | no |
 
 ## Outputs

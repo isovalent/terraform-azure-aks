@@ -55,7 +55,7 @@ module "main" {
   os_disk_size_gb                      = var.root_disk_size
   private_cluster_enabled              = false
   rbac_aad_admin_group_object_ids = [
-    for k, v in data.azuread_group.admins : v.id
+    for k, v in data.azuread_group.admins : split("/", v.id)[2]
   ]
   rbac_aad            = true
   resource_group_name = var.resource_group_name

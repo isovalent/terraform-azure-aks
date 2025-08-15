@@ -51,7 +51,9 @@ An opinionated Terraform module that can be used to create and manage an AKS clu
 | <a name="input_min_nodes"></a> [min\_nodes](#input\_min\_nodes) | The minimum number of nodes in the AKS cluster. | `number` | `3` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of the AKS cluster. | `string` | n/a | yes |
 | <a name="input_network_plugin"></a> [network\_plugin](#input\_network\_plugin) | The network plugin to use (one of 'azure' or 'none'). | `string` | `"azure"` | no |
+| <a name="input_nodes_count"></a> [nodes\_count](#input\_nodes\_count) | The number of nodes in the AKS cluster when enable\_auto\_scaling = false. Set to null when enable\_auto\_scaling = true | `number` | `2` | no |
 | <a name="input_oidc_issuer_enabled"></a> [oidc\_issuer\_enabled](#input\_oidc\_issuer\_enabled) | Enable OIDC issuer | `bool` | `false` | no |
+| <a name="input_os_sku"></a> [os\_sku](#input\_os\_sku) | (Optional) Specifies the OS SKU used by the agent pool. Possible values include: `Ubuntu`, `CBLMariner`, `Mariner`, `Windows2019`, `Windows2022`. If not specified, the default is `Ubuntu` if OSType=Linux or `Windows2019` if OSType=Windows. And the default Windows OSSKU will be changed to `Windows2022` after Windows2019 is deprecated. Changing this forces a new resource to be created. | `string` | `null` | no |
 | <a name="input_owner"></a> [owner](#input\_owner) | Your name. | `string` | n/a | yes |
 | <a name="input_paid_tier"></a> [paid\_tier](#input\_paid\_tier) | Whether to use the "Standard" AKS tier. | `bool` | `false` | no |
 | <a name="input_public_ssh_key"></a> [public\_ssh\_key](#input\_public\_ssh\_key) | A custom ssh key to control access to the AKS cluster. Changing this forces a new resource to be created. | `string` | `""` | no |

@@ -38,6 +38,7 @@ module "main" {
   location                             = var.region
   agents_max_count                     = var.max_nodes
   agents_min_count                     = var.min_nodes
+  agents_count                         = var.nodes_count
   agents_pool_name                     = local.pool_name
   agents_tags                          = local.tags
   tags                                 = local.tags
@@ -53,6 +54,7 @@ module "main" {
   network_plugin                       = var.network_plugin
   orchestrator_version                 = var.kubernetes_version
   os_disk_size_gb                      = var.root_disk_size
+  os_sku                               = var.os_sku
   private_cluster_enabled              = false
   rbac_aad_admin_group_object_ids = [
     for k, v in data.azuread_group.admins : split("/", v.id)[2]

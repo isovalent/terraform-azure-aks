@@ -47,6 +47,12 @@ variable "min_nodes" {
   type        = number
 }
 
+variable "nodes_count" {
+  default     = 2
+  description = "The number of nodes in the AKS cluster when enable_auto_scaling = false. Set to null when enable_auto_scaling = true"
+  type        = number
+}
+
 variable "network_plugin" {
   description = "The network plugin to use (one of 'azure' or 'none')."
   default     = "azure"
@@ -136,4 +142,10 @@ variable "tags" {
   description = "A map of tags to assign to the AKS cluster."
   type        = map(string)
   default     = {}
+}
+
+variable "os_sku" {
+  type        = string
+  default     = null
+  description = "(Optional) Specifies the OS SKU used by the agent pool. Possible values include: `Ubuntu`, `CBLMariner`, `Mariner`, `Windows2019`, `Windows2022`. If not specified, the default is `Ubuntu` if OSType=Linux or `Windows2019` if OSType=Windows. And the default Windows OSSKU will be changed to `Windows2022` after Windows2019 is deprecated. Changing this forces a new resource to be created."
 }

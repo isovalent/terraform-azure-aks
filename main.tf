@@ -31,8 +31,8 @@ data "azuread_group" "admins" {
 
 // Create an AKS cluster.
 module "main" {
-  source  = "Azure/aks/azurerm"
-  version = "10.1.1"
+  source  = "git::ssh://git@github.com/isovalent/terraform-azurerm-aks.git?ref=11.0.0_custom_ca"
+  version = "11.0.0"
 
   agents_availability_zones            = sort(flatten(jsondecode(module.availability_zones_data_source.stdout)))
   location                             = var.region
@@ -46,6 +46,7 @@ module "main" {
   agents_size                          = var.instance_type
   cluster_name                         = var.name
   cluster_log_analytics_workspace_name = var.name
+  custom_ca_trust_certificates_base64  = var.custom_ca_trust_certificates_base64
   prefix                               = var.name
   enable_auto_scaling                  = var.enable_auto_scaling
   role_based_access_control_enabled    = true

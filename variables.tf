@@ -23,6 +23,11 @@ variable "api_server_authorized_ip_ranges" {
   default     = null
   description = "(Optional) The IP ranges to allow for incoming traffic to the server nodes."
 }
+variable "custom_ca_trust_certificates_base64" {
+  default     = []
+  description = "The list of custom CA trust certificates to use for the AKS cluster."
+  type        = list(string)
+}
 
 variable "instance_type" {
   default     = "Standard_D2s_v3"

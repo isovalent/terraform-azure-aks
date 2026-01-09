@@ -43,6 +43,7 @@ An opinionated Terraform module that can be used to create and manage an AKS clu
 |------|-------------|------|---------|:--------:|
 | <a name="input_admin_azuread_group_names"></a> [admin\_azuread\_group\_names](#input\_admin\_azuread\_group\_names) | The list of Azure AD groups that should be granted admin access to the AKS cluster. | `list(string)` | `[]` | no |
 | <a name="input_admin_username"></a> [admin\_username](#input\_admin\_username) | The username of the local administrator to be created on the Kubernetes cluster. Set this variable to `null` to turn off the cluster's `linux_profile`. Changing this forces a new resource to be created. | `string` | `null` | no |
+| <a name="input_api_server_authorized_ip_ranges"></a> [api\_server\_authorized\_ip\_ranges](#input\_api\_server\_authorized\_ip\_ranges) | (Optional) The IP ranges to allow for incoming traffic to the server nodes. | `set(string)` | `null` | no |
 | <a name="input_enable_auto_scaling"></a> [enable\_auto\_scaling](#input\_enable\_auto\_scaling) | Enable auto scaling | `bool` | `false` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | The type of instance to use for the single node pool to be created. (NOTE: The upstream AKS module doesn't support multiple node pools yet.) | `string` | `"Standard_D2s_v3"` | no |
 | <a name="input_kube_proxy_disabled"></a> [kube\_proxy\_disabled](#input\_kube\_proxy\_disabled) | Disable kube-proxy | `bool` | `false` | no |

@@ -18,6 +18,12 @@ variable "admin_azuread_group_names" {
   type        = list(string)
 }
 
+variable "api_server_authorized_ip_ranges" {
+  type        = set(string)
+  default     = null
+  description = "(Optional) The IP ranges to allow for incoming traffic to the server nodes."
+}
+
 variable "instance_type" {
   default     = "Standard_D2s_v3"
   description = "The type of instance to use for the single node pool to be created. (NOTE: The upstream AKS module doesn't support multiple node pools yet.)"

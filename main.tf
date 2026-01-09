@@ -41,6 +41,7 @@ module "main" {
   agents_count                         = var.nodes_count
   agents_pool_name                     = local.pool_name
   agents_tags                          = local.tags
+  api_server_authorized_ip_ranges      = var.api_server_authorized_ip_ranges
   tags                                 = local.tags
   agents_size                          = var.instance_type
   cluster_name                         = var.name

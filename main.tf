@@ -31,7 +31,7 @@ data "azuread_group" "admins" {
 
 // Create an AKS cluster.
 module "main" {
-  source  = "git::ssh://git@github.com/nmbradford/terraform-azurerm-aks.git?ref=main"
+  source  = "git::ssh://git@github.com/nmbradford/terraform-azurerm-aks.git?ref=10.1.1_custom_ca"
 
   agents_availability_zones            = sort(flatten(jsondecode(module.availability_zones_data_source.stdout)))
   location                             = var.region
